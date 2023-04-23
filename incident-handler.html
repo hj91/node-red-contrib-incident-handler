@@ -1,0 +1,28 @@
+<!-- incident-handler.html -->
+<script type="text/javascript">
+  RED.nodes.registerType('incident-handler', {
+    category: 'Bufferstack.IO',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: '' },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'font-awesome/fa-flag',
+    label: function () {
+      return this.name || 'incident handler';
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="incident-handler">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="incident-handler">
+  <p>Handles incident details with messages on topics "incident", "start", "ack", "stop", and "reset".</p>
+</script>
+
