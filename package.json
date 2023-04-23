@@ -1,0 +1,30 @@
+{
+  "name": "node-red-contrib-incident-handler",
+  "version": "0.0.1",
+  "description": "A Node-RED node to handle incident-related information by processing and combining messages with specific topics.",
+  "homepage": "https://github.com/hj91/node-red-contrib-incident-handler",
+  "bugs": "https://github.com/hj91/node-red-contrib-incident-handler/issues",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Harshad Joshi",
+    "email": "harshad@bufferstack.io",
+    "url": "https://bufferstack.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hj91/node-red-contrib-incident-handler"
+  },
+  "keywords": [
+    "node-red",
+    "incident",
+    "handler",
+    "incident management",
+    "message processing"
+  ],
+  "node-red": {
+    "nodes": {
+      "incident-handler": "incident-handler.js"
+    }
+  }
+}
+
