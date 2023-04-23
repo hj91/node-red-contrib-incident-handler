@@ -1,0 +1,243 @@
+[
+    {
+        "id": "8a8a44c7b45d41b5",
+        "type": "tab",
+        "label": "incident-handling",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "91b6cd0df4acae47",
+        "type": "inject",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "start",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "283ed5863180973c"
+            ]
+        ]
+    },
+    {
+        "id": "21992917695a3c02",
+        "type": "inject",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ack",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 290,
+        "y": 340,
+        "wires": [
+            [
+                "283ed5863180973c"
+            ]
+        ]
+    },
+    {
+        "id": "ed3a3e38f3ffc47c",
+        "type": "inject",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "stop",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "283ed5863180973c"
+            ]
+        ]
+    },
+    {
+        "id": "c3f2abc73f906865",
+        "type": "inject",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "reset",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "283ed5863180973c"
+            ]
+        ]
+    },
+    {
+        "id": "9c9b034677ba4840",
+        "type": "inject",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "incident",
+        "payload": "This is incident!",
+        "payloadType": "str",
+        "x": 300,
+        "y": 140,
+        "wires": [
+            [
+                "283ed5863180973c"
+            ]
+        ]
+    },
+    {
+        "id": "2803aaeed9244f28",
+        "type": "function",
+        "z": "8a8a44c7b45d41b5",
+        "name": "test",
+        "func": "var incident = msg.payload.incident\nvar start = msg.payload.start\nvar ack = msg.payload.ack\nvar stop = msg.payload.stop\nvar durationStr = msg.payload.duration.split(': ')[1]; // This will give you the duration value as a string \"8.204\"\nvar duration = parseFloat(durationStr); // This will convert the string to a number 8.204\n\n\nmsg.payload = {incident,start,ack,stop,duration}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 420,
+        "wires": [
+            [
+                "1968fa32eed2be35"
+            ]
+        ]
+    },
+    {
+        "id": "1968fa32eed2be35",
+        "type": "debug",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "283ed5863180973c",
+        "type": "incident-handler",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [
+                "2803aaeed9244f28"
+            ]
+        ]
+    },
+    {
+        "id": "c678859815c78b7c",
+        "type": "inject",
+        "z": "8a8a44c7b45d41b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "incident",
+        "payload": "This is incident2",
+        "payloadType": "str",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "283ed5863180973c"
+            ]
+        ]
+    },
+    {
+        "id": "3f9112f488236ac2",
+        "type": "comment",
+        "z": "8a8a44c7b45d41b5",
+        "name": "Incident Handling Example",
+        "info": "Note - the input can be taken from mqtt, opcua or any industrial protocol\n\nFollow the squence while using it for industrial use\n\n1. Incident\n2. start\n3. ack\n4. stop\n5. reset\n\n\nNote - In somecases, the system can provide input stop before ack - in that case the timestamp for ack is same as that of stop message.\n\nAlso reset signal *must* be provided to clear the existing messages - this is very useful when you are logging or visulizing the data\n\nAuthor - Harshad Joshi, Bufferstack.IO Analytics Technology LLP, Pune",
+        "x": 220,
+        "y": 60,
+        "wires": []
+    }
+]
