@@ -61,3 +61,7 @@ Contributions are welcome! Please submit a pull request or open an issue to disc
 ## Support
 
 For support, please reach out to Harshad Joshi at [harshad@bufferstack.io](mailto:harshad@bufferstack.io).
+
+## Changelog 16-04-2024
+
+Internal variable Duration now changed to incidentDuration to avoid query related issues when data is stored in InfluxDB 
