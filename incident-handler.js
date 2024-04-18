@@ -21,7 +21,7 @@
 // incident-handler.js
 // Harshad Joshi, Bufferstack.IO Analytics Technology LLP
 // Release date - 23 April 2023
-
+// variable Duration changed to incidentDuration - 18 April 2024
 
 module.exports = function (RED) {
   function IncidentHandlerNode(config) {
@@ -91,7 +91,7 @@ module.exports = function (RED) {
         var stopTime = new Date();
         var dateStr = formatDate(stopTime);
         var timeStr = formatTime(stopTime);
-        var duration = startTime ? (stopTime - startTime) / 1000 : 'N/A';
+        var incidentDuration = startTime ? (stopTime - startTime) / 1000 : 'N/A';
         combinedMessage.stop = dateStr + ' ' + timeStr + ' - Incident cleared';
         startTime = null;
         receivedTopics.add('stop');
@@ -102,7 +102,7 @@ module.exports = function (RED) {
           receivedTopics.add('ack');
         }
         
-        combinedMessage.duration = 'Duration: ' + duration;
+        combinedMessage.incidentDuration = 'incidentDuration: ' + incidentDuration;
       } else if (msg.topic === 'reset' && msg.payload) {
         incident = null;
         startTime = null;
