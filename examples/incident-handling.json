@@ -1,6 +1,6 @@
 [
     {
-        "id": "8a8a44c7b45d41b5",
+        "id": "272a5c188a42496f",
         "type": "tab",
         "label": "incident-handling",
         "disabled": false,
@@ -8,9 +8,9 @@
         "env": []
     },
     {
-        "id": "91b6cd0df4acae47",
+        "id": "b084d7bf5c05960e",
         "type": "inject",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "props": [
             {
@@ -32,14 +32,14 @@
         "y": 280,
         "wires": [
             [
-                "283ed5863180973c"
+                "e0babe1b9bed6f30"
             ]
         ]
     },
     {
-        "id": "21992917695a3c02",
+        "id": "e55950b8b27f8323",
         "type": "inject",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "props": [
             {
@@ -61,14 +61,14 @@
         "y": 340,
         "wires": [
             [
-                "283ed5863180973c"
+                "e0babe1b9bed6f30"
             ]
         ]
     },
     {
-        "id": "ed3a3e38f3ffc47c",
+        "id": "f5ad2fcc6b4abb36",
         "type": "inject",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "props": [
             {
@@ -90,14 +90,14 @@
         "y": 420,
         "wires": [
             [
-                "283ed5863180973c"
+                "e0babe1b9bed6f30"
             ]
         ]
     },
     {
-        "id": "c3f2abc73f906865",
+        "id": "c5df543e8f383222",
         "type": "inject",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "props": [
             {
@@ -119,14 +119,14 @@
         "y": 480,
         "wires": [
             [
-                "283ed5863180973c"
+                "e0babe1b9bed6f30"
             ]
         ]
     },
     {
-        "id": "9c9b034677ba4840",
+        "id": "b1b0090f1529f38a",
         "type": "inject",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "props": [
             {
@@ -148,16 +148,16 @@
         "y": 140,
         "wires": [
             [
-                "283ed5863180973c"
+                "e0babe1b9bed6f30"
             ]
         ]
     },
     {
-        "id": "2803aaeed9244f28",
+        "id": "6b666ed68a783d43",
         "type": "function",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "test",
-        "func": "var incident = msg.payload.incident\nvar start = msg.payload.start\nvar ack = msg.payload.ack\nvar stop = msg.payload.stop\nvar durationStr = msg.payload.incidentDuration.split(': ')[1]; // This will give you the duration value as a string \"8.204\"\nvar incidentDuration = parseFloat(durationStr); // This will convert the string to a number 8.204\n\n\nmsg.payload = { incident, start, ack, stop, incidentDuration}\n\nreturn msg;",
+        "func": "var incident = msg.payload.incident\nvar start = msg.payload.start\nvar ack = msg.payload.ack\nvar stop = msg.payload.stop\nvar durationStr = msg.payload.incidentDuration.split(': ')[1]; // This will give you the duration value as a string \"8.204\"\nvar duration = parseFloat(durationStr); // This will convert the string to a number 8.204\n\n\nmsg.payload = {incident,start,ack,stop,duration}\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -168,14 +168,14 @@
         "y": 420,
         "wires": [
             [
-                "1968fa32eed2be35"
+                "3dae40bf6a0f0535"
             ]
         ]
     },
     {
-        "id": "1968fa32eed2be35",
+        "id": "3dae40bf6a0f0535",
         "type": "debug",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -190,22 +190,22 @@
         "wires": []
     },
     {
-        "id": "283ed5863180973c",
+        "id": "e0babe1b9bed6f30",
         "type": "incident-handler",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "x": 600,
         "y": 420,
         "wires": [
             [
-                "2803aaeed9244f28"
+                "6b666ed68a783d43"
             ]
         ]
     },
     {
-        "id": "c678859815c78b7c",
+        "id": "de3af732d7b08835",
         "type": "inject",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "",
         "props": [
             {
@@ -227,14 +227,14 @@
         "y": 200,
         "wires": [
             [
-                "283ed5863180973c"
+                "e0babe1b9bed6f30"
             ]
         ]
     },
     {
-        "id": "3f9112f488236ac2",
+        "id": "bab97c280d191567",
         "type": "comment",
-        "z": "8a8a44c7b45d41b5",
+        "z": "272a5c188a42496f",
         "name": "Incident Handling Example",
         "info": "Note - the input can be taken from mqtt, opcua or any industrial protocol\n\nFollow the squence while using it for industrial use\n\n1. Incident\n2. start\n3. ack\n4. stop\n5. reset\n\n\nNote - In somecases, the system can provide input stop before ack - in that case the timestamp for ack is same as that of stop message.\n\nAlso reset signal *must* be provided to clear the existing messages - this is very useful when you are logging or visulizing the data\n\nAuthor - Harshad Joshi, Bufferstack.IO Analytics Technology LLP, Pune",
         "x": 220,
